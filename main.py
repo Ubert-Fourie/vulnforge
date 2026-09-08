@@ -1,5 +1,5 @@
 from src.models import Asset, Vulnerability, Finding
-
+from utils import cal_severity
 
 # Create an asset
 asset = Asset(
@@ -28,6 +28,9 @@ finding = Finding(
 )
 
 
+severity = cal_severity(vulnerability.cvss_score)
+
+
 # Display the objects
 print("---VulnForge---")
 print()
@@ -52,5 +55,10 @@ finding.close_finding()
 print()
 print("Updated Finding:")
 print(finding)
+
+#using objects to calculate severity based on another object (CVSS score)
+print()
+print("Severity:")
+print(severity)
 
 #placeholder code for future implementation of the CLI
